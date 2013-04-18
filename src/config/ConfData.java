@@ -6,10 +6,26 @@ import java.util.List;
 
 public class ConfData {
 	
+	private String filePath;
+	
 	private List<ConfAttribute> confAttributes = new ArrayList<ConfAttribute>();
+	
+	public ConfData setFilePath(String filePath) {
+		this.filePath = filePath;
+		return this;
+	}
+	
+	public String getFilePath() {
+		return filePath;
+	}
 	
 	public ConfData addConfAttributes(ConfAttribute confAttribute){
 		confAttributes.add(confAttribute);
+		return this;
+	}
+	
+	public ConfData setConfAttributes(List<ConfAttribute> confAttributes) {
+		this.confAttributes = confAttributes;
 		return this;
 	}
 	

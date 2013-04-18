@@ -62,7 +62,7 @@ public class Sort extends Operator{
 	}
 
 	@Override
-	protected String open() throws IOException {
+	protected ConfData open() throws IOException {
 		
 		fileReader = new FileManager(this.entry, this.confDataSort);
 		
@@ -74,7 +74,9 @@ public class Sort extends Operator{
 		
 		fileWriter.openFileWriter();
 		
-		return resultSort;
+		return new ConfData()
+				.setFilePath(resultSort)
+				.setConfAttributes(this.confDataSort.getConfAttributes());
 		
 	}
 

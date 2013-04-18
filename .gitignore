@@ -6,6 +6,7 @@
 *.class
 
 bin/
+temp/*
 
 # Package Files #
 *.jar

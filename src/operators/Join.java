@@ -33,7 +33,7 @@ public class Join extends Operator{
 	
 	private static final int SIZE_BLOCK_R = 100000;
 	
-	private static final int SIZE_BLOCK_S = 100000;
+	private static final int SIZE_BLOCK_S = 100;
 	
 	private Block blockR;
 	
@@ -80,7 +80,7 @@ public class Join extends Operator{
 	}
 
 	@Override
-	protected String open() throws IOException {
+	protected ConfData open() throws IOException {
 		
 		fileReaderR = new FileManager(this.entryR, this.confDataR);
 		fileReaderR.openFileReader();
@@ -97,14 +97,16 @@ public class Join extends Operator{
 		fileReaderS = new FileManager(this.entryS, this.confDataS);
 		fileReaderS.openFileReader();
 		
-		String resultJoin = this.toString() + new Date().getTime() + ".txt";
+		String resultFilePath = this.toString() + new Date().getTime() + ".txt";
 		
 		this.confDataJoin = ConfData.joinConfData(this.confDataR, this.confDataS, this.nameAttributeS);
 		
-		fileWriter = new FileManager(resultJoin, confDataJoin);
+		fileWriter = new FileManager(resultFilePath, confDataJoin);
 		fileWriter.openFileWriter();
 		
-		return resultJoin;		
+		return new ConfData()
+				.setFilePath(resultFilePath)
+				.setConfAttributes(this.confDataJoin.getConfAttributes());		
 	}
 
 	/*@Override

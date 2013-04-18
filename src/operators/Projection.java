@@ -20,7 +20,7 @@ public class Projection extends Operator{
 	
 	private ConfData confData;
 	
-	private ConfData confDataProject;
+	private ConfData confDataProjection;
 	
 	public Projection addNameAttribute(String listNameAttribute) {
 		this.listNameAttribute.add(listNameAttribute);
@@ -33,7 +33,7 @@ public class Projection extends Operator{
 	}
 
 	public ConfData getConfDataProject(){
-		return this.confDataProject;
+		return this.confDataProjection;
 	}
 	
 	@Override
@@ -52,21 +52,23 @@ public class Projection extends Operator{
 	}
 
 	@Override
-	protected String open() throws IOException {
+	protected ConfData open() throws IOException {
 		
 		fileReader = new FileManager(this.entry, this.confData);
 		
 		fileReader.openFileReader();
 		
-		String resultProjection = this.toString() + new Date().getTime() + ".txt";		
+		String resultFilePath = this.toString() + new Date().getTime() + ".txt";		
 
-		this.confDataProject = ConfData.projectConfData(this.confData, this.listNameAttribute);
+		this.confDataProjection = ConfData.projectConfData(this.confData, this.listNameAttribute);
 
-		fileWriter = new FileManager(resultProjection, this.confDataProject);
+		fileWriter = new FileManager(resultFilePath, this.confDataProjection);
 		
 		fileWriter.openFileWriter();
 				
-		return resultProjection;
+		return new ConfData()
+				.setFilePath(resultFilePath)
+				.setConfAttributes(this.confDataProjection.getConfAttributes());
 	}
 
 	@Override

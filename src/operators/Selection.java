@@ -55,19 +55,21 @@ public class Selection extends Operator{
 	}
 
 	@Override
-	protected String open() throws IOException {
+	protected ConfData open() throws IOException {
 		
 		fileReader = new FileManager(this.entry, this.confData);
 		
 		fileReader.openFileReader();
 		
-		String resultSelection = this.toString() + new Date().getTime() + ".txt";
+		String resultFilePath = this.toString() + new Date().getTime() + ".txt";
 
-		fileWriter = new FileManager(resultSelection, this.confData);
+		fileWriter = new FileManager(resultFilePath, this.confData);
 		
 		fileWriter.openFileWriter();
 		
-		return resultSelection;
+		return new ConfData()
+				.setFilePath(resultFilePath)
+				.setConfAttributes(this.confData.getConfAttributes());
 	}	
 
 	@Override

@@ -14,7 +14,7 @@ import entities.Tuple;
 
 public class FileManager {
 	
-	public static final String TEMP_FOLDER_PATH = "C:\\Users\\Christiane\\workspace\\SelectBD\\temp\\";
+	public static final String TEMP_FOLDER_PATH = "D:\\Jesse\\Workspaces\\Workspace-github\\SelectBD\\temp\\";
 	public static final String SEPARATOR = "##";
 
 	private String path;
@@ -26,8 +26,8 @@ public class FileManager {
 	
 	public FileManager (String path, ConfData confData){
 		this.path = path;
-		this.lastTuple = null;
 		this.confData = confData;
+		this.lastTuple = null;
 	}
 	
 	public static void cleanTempFolder() {
