@@ -4,6 +4,9 @@
 !.gitignore
 
 *.class
+
+bin/
+
 # Package Files #
 *.jar
 *.war
