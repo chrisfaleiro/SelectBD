@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import util.FileManager;
@@ -11,6 +12,17 @@ import config.ConfData;
 public class Tuple{
 	
 	private List<Attribute> attributes = new ArrayList<Attribute>();
+	private int blockId;
+	
+	public int getBlockId() {
+		return blockId;
+	}
+
+	public void setBlockId(int blockId) {
+		this.blockId = blockId;
+	}
+
+	private int run;
 	
 	public Tuple addAttribute(Attribute attribute){
 		attributes.add(attribute);
@@ -19,6 +31,14 @@ public class Tuple{
 	
 	public List<Attribute> getAttributes(){
 		return this.attributes;
+	}
+	
+	public void setRun(int run){
+		this.run = run;
+	}
+	
+	public int getRun(){
+		return run;
 	}
 	
 	public Attribute getAttributeByName(String nameAtribute){
@@ -118,5 +138,4 @@ public class Tuple{
 		
 		return str;
 	}
-	
 }

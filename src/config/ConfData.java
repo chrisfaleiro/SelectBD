@@ -8,10 +8,21 @@ public class ConfData {
 	
 	private String filePath;
 	
+	private List<String> filePathList;
+	
 	private List<ConfAttribute> confAttributes = new ArrayList<ConfAttribute>();
 	
 	public ConfData setFilePath(String filePath) {
 		this.filePath = filePath;
+		return this;
+	}
+	
+	public ConfData setFilePath(List<String> filePathList){
+		
+		for (String filePath : filePathList){
+			this.filePathList.add(filePath);
+		}
+		
 		return this;
 	}
 	

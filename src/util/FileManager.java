@@ -14,7 +14,7 @@ import entities.Tuple;
 
 public class FileManager {
 	
-	public static final String TEMP_FOLDER_PATH = "D:\\Jesse\\Workspaces\\Workspace-github\\SelectBD\\temp\\";
+	public static final String TEMP_FOLDER_PATH = "E:\\Arquivos de programas\\workspace-git\\SelectBD\\temp\\";
 	public static final String SEPARATOR = "##";
 
 	private String path;

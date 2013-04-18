@@ -4,7 +4,7 @@ import operators.Join;
 import operators.Operator;
 import operators.Projection;
 import operators.Selection;
-import operators.Sort;
+import operators.TwoPhaseMultiwayMergeSort;
 import util.FileManager;
 import config.ConfData;
 import config.Data;
@@ -54,7 +54,7 @@ public class Main {
 			.addEntry(Data.PRODUCAO.getFilePath())
 			.run();*/
 		
-		new Sort()
+		new TwoPhaseMultiwayMergeSort()
 		.setConfData(Data.PESSOA.getConf())
 		.setNameAttribute("pessoaID")
 		.addEntry(Data.PESSOA.getFilePath())
