@@ -1,5 +1,9 @@
-*.class
+# Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
 
+*.class
 # Package Files #
 *.jar
 *.war
