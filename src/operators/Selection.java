@@ -2,13 +2,12 @@ package operators;
 
 import java.io.IOException;
 import java.util.Date;
-
 import config.ConfData;
-
 import util.FileManager;
 import entities.Attribute;
 import entities.Block;
 import entities.Tuple;
+import static entities.Block.BLOCK_SIZE;
 
 public class Selection extends Operator{
 	
@@ -23,7 +22,7 @@ public class Selection extends Operator{
 	private FileManager fileWriter;
 	
 	private ConfData confData;
-	
+		
 	public Selection setNameAttribute(String nameAttribute) {
 		this.nameAttribute = nameAttribute;
 		return this;
@@ -75,7 +74,7 @@ public class Selection extends Operator{
 	@Override
 	protected boolean next() throws IOException {
 		
-		Block block = fileReader.getNextBlock(100); 
+		Block block = fileReader.getNextBlock(BLOCK_SIZE); 
 		
 		if (block.getTuples().isEmpty()){
 			return false;

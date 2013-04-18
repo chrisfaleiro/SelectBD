@@ -6,6 +6,8 @@ import java.util.List;
 
 public class ConfData {
 	
+	public static final int MEMORY_TOTAL = 25165824;
+	
 	private String filePath;
 	
 	private List<ConfAttribute> confAttributes = new ArrayList<ConfAttribute>();
@@ -64,7 +66,6 @@ public class ConfData {
 					confAttribute = new ConfAttribute(position, confAttributeOrigem.getClass(), confAttributeOrigem.getName());
 					confDataProject.addConfAttributes(confAttribute);
 					position++;
-					//System.out.println(position);
 					break;
 				}
 			}

@@ -8,6 +8,8 @@ import config.ConfData;
 import entities.Attribute;
 import entities.Block;
 import entities.Tuple;
+import static entities.Block.BLOCK_SIZE;
+import static config.ConfData.MEMORY_TOTAL;
 
 public class Join extends Operator{
 
@@ -31,9 +33,11 @@ public class Join extends Operator{
 	
 	private FileManager fileWriter;
 	
-	private static final int SIZE_BLOCK_R = 100000;
+	private static final int totalBlock = MEMORY_TOTAL / BLOCK_SIZE;
 	
-	private static final int SIZE_BLOCK_S = 100;
+	private static final int SIZE_BLOCK_R = (totalBlock - 1) * BLOCK_SIZE;
+	
+	private static final int SIZE_BLOCK_S = BLOCK_SIZE;
 	
 	private Block blockR;
 	
@@ -109,46 +113,6 @@ public class Join extends Operator{
 				.setConfAttributes(this.confDataJoin.getConfAttributes());		
 	}
 
-	/*@Override
-	protected boolean next() throws IOException {
-		
-		Block blockS = fileReaderS.getNextBlock(SIZE_BLOCK_S);
-		
-		if(blockS.getTuples().isEmpty()){		
-			
-			this.blockR = fileReaderR.getNextBlock(SIZE_BLOCK_R);
-			this.restartS();
-			blockS = fileReaderS.getNextBlock(SIZE_BLOCK_S);
-			
-		}
-		if(blockR.getTuples().isEmpty()){
-			return false;
-		}
-		
-		Block blockResult = new Block(); 		
-		Attribute attributeR;
-		Attribute attributeS;
-		
-		for (Tuple tupleR : blockR.getTuples()){
-			attributeR = tupleR.getAttributeByName(this.nameAttributeR);	
-			
-			for (Tuple tupleS : blockS.getTuples()){
-				attributeS = tupleS.getAttributeByName(this.nameAttributeS);
-				
-				boolean tupleJoined = attributeR.getValue().toString().equals(attributeS.getValue());
-				
-				if (tupleJoined){					
-					Tuple tuple = Tuple.joinTuples(tupleR, tupleS, attributeS);
-					blockResult.addTuple(tuple);
-				}
-				
-			}
-		}
-		fileWriter.writeFile(blockResult);
-		
-		return true;
-	}*/
-	
 	@Override
 	protected boolean next() throws IOException {
 		

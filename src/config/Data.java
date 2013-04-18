@@ -3,19 +3,19 @@ package config;
 public enum Data {
 
 	PESSOA(new ConfData()
-				.setFilePath("D:\\Jesse\\Workspaces\\Workspace-github\\_data\\pessoa.txt")
+				.setFilePath("E:\\Tabelas\\pessoa.txt")
 				.addConfAttributes(new ConfAttribute(0, Long.class, "pessoaID"))
 				.addConfAttributes(new ConfAttribute(1, String.class, "nome"))),
 	
 	PRODUCAO(new ConfData()
-				.setFilePath("D:\\Jesse\\Workspaces\\Workspace-github\\_data\\producao.txt")
+				.setFilePath("E:\\Tabelas\\producao.txt")
 				.addConfAttributes(new ConfAttribute(0, Long.class, "producaoID"))
 				.addConfAttributes(new ConfAttribute(1, String.class, "titulo"))
 				.addConfAttributes(new ConfAttribute(2, String.class, "ano_producao"))
 				.addConfAttributes(new ConfAttribute(3, String.class, "tipoID"))),
 	
 	EQUIPE(new ConfData()
-				.setFilePath("D:\\Jesse\\Workspaces\\Workspace-github\\_data\\equipe.txt")
+				.setFilePath("E:\\Tabelas\\equipe.txt")
 				.addConfAttributes(new ConfAttribute(0, Long.class, "equipeID"))
 				.addConfAttributes(new ConfAttribute(1, Long.class, "pessoaID"))
 				.addConfAttributes(new ConfAttribute(2, Long.class, "producaoID"))

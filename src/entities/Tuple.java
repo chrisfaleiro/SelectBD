@@ -12,8 +12,11 @@ public class Tuple{
 	
 	private List<Attribute> attributes = new ArrayList<Attribute>();
 	
+	private Long size = 0L;
+	
 	public Tuple addAttribute(Attribute attribute){
 		attributes.add(attribute);
+		size += attribute.getSize();
 		return this;
 	}
 	
@@ -21,6 +24,10 @@ public class Tuple{
 		return this.attributes;
 	}
 	
+	public Long getSize() {
+		return size;
+	}
+
 	public Attribute getAttributeByName(String nameAtribute){
 		for (Attribute attribute : attributes){
 			if(attribute.getName().equals(nameAtribute)){
