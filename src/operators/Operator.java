@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import config.ConfData;
+
 public abstract class Operator {
 	
 	private List<String> entries = new ArrayList<String>();
-	private String resultFileName;
+	private ConfData resultConfData;
 	private Date iniTime;
 	private Date endTime;
 	
@@ -25,20 +27,20 @@ public abstract class Operator {
 	
 	protected abstract void setEntries();
 	
-	protected abstract String open() throws IOException;
+	protected abstract ConfData open() throws IOException;
 	
 	protected abstract boolean next() throws IOException;
 	
 	protected abstract void close();	
 	
-	public String run() {
+	public ConfData run() {
 		
 		start();
 		validate();
 		setEntries();
 		
 		try {
-			resultFileName = open();
+			resultConfData = open();
 			
 			while (next());
 			
@@ -53,7 +55,7 @@ public abstract class Operator {
 		
 		finish();
 		
-		return resultFileName;
+		return resultConfData;
 	}
 	
 	private void start() {
@@ -67,7 +69,7 @@ public abstract class Operator {
 		endTime = new Date();
 		
 		System.out.println(
-				"Arquivo de Saída: " + resultFileName + "\n" +
+				"Arquivo de Saída: " + resultConfData.getFilePath() + "\n" +
 				"Operador executado em " + (endTime.getTime() - iniTime.getTime()) / 1000 + " segundos.\n");
 	}
 }
