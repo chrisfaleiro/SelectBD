@@ -14,7 +14,7 @@ import entities.Tuple;
 
 public class FileManager {
 	
-	public static final String TEMP_FOLDER_PATH = "E:\\Arquivos de programas\\workspace-git\\SelectBD\\temp\\";
+	public static final String TEMP_FOLDER_PATH = "E:\\git\\SelectBD\\temp\\";
 	public static final String SEPARATOR = "##";
 
 	private String path;
@@ -61,15 +61,15 @@ public class FileManager {
 	public Block getNextBlock(int size) throws IOException{
 		
 		String line = "";
-		int linesReaded = 0;
+		Long sizeBlock = 0L;
 		
 		Block resultBlock = new Block();
 		
 		if (lastTuple != null){
 			resultBlock.addTuple(lastTuple);
 		}
-			
-		while (linesReaded < size){
+		
+		while (sizeBlock < size){
 			line = bufferedReader.readLine();
 			
 			if (line == null){
@@ -78,8 +78,9 @@ public class FileManager {
 			
 			Tuple tuple = new Tuple().generateTuple(line, confData);
 		
+			sizeBlock += tuple.getSize();
+			
 			resultBlock.addTuple(tuple);
-			linesReaded++;
 		}
 		
 		boolean overrideBlockSize = resultBlock.getTuples().size() > size;

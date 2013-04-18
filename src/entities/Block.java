@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.List;
 
 public class Block {
-				
+	
+	public static final int BLOCK_SIZE = 40960;
+	
 	private List<Tuple> tuples = new ArrayList<Tuple>();
 	private int size;
 	

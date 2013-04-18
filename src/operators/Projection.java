@@ -7,6 +7,7 @@ import util.FileManager;
 import config.ConfData;
 import entities.Block;
 import entities.Tuple;
+import static entities.Block.BLOCK_SIZE;
 
 public class Projection extends Operator{
 
@@ -74,7 +75,7 @@ public class Projection extends Operator{
 	@Override
 	protected boolean next() throws IOException {
 		
-		Block block = fileReader.getNextBlock(100); 
+		Block block = fileReader.getNextBlock(BLOCK_SIZE); 
 		
 		if (block.getTuples().isEmpty()){
 			return false;
