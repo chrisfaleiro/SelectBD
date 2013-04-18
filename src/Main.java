@@ -4,6 +4,7 @@ import operators.Join;
 import operators.Operator;
 import operators.Projection;
 import operators.Selection;
+import operators.Sort;
 import util.FileManager;
 import config.Data;
 
@@ -42,6 +43,12 @@ public class Main {
 			.addNameAttribute("ano_producao")
 			.addEntry(Data.PRODUCAO.getFilePath())
 			.run();*/
+		
+		new Sort()
+		.setConfData(Data.PESSOA.getConf())
+		.setNameAttribute("pessoaID")
+		.addEntry(Data.PESSOA.getFilePath())
+		.run();
 
 		//falta retornar confData do resultado do Join para ser passado para os outros operadores.
 			
